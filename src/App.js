@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { Children } from "react";
+import "./index.css";
 
-function App() {
+function Booklist() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="booklist">
+      <Book
+        img="./images/book-1.jpg"
+        title="Iron Flame"
+        authur="Rebecca Yarros"
+      >
+        <p>I am a child prop</p>
+      </Book>
+      <Book
+        img="./images/book-2.jpg"
+        title="The Housemaid"
+        authur="Freida McFadden"
+      />
+      <Book
+        img="./images/book-3.jpg"
+        title="Unbroken Bonds of Battle: A Modern Warriors Book of Heroism"
+        authur="Johnny Joey Jones"
+      />
+      <Book
+        img="./images/book-4.jpg"
+        title="Atomic Habit"
+        authur="James Clear"
+      />
+      <Book
+        img="./images/book-5.jpg"
+        title="Outlive: The Science and Art of Longevity"
+        authur="Peter Attia MD"
+      />
+      <Book img="./images/book-6.jpg" title="Verity" authur="Colleen Hoover" />
+    </section>
   );
 }
 
-export default App;
+const Book = (props) => {
+  return (
+    <article className="book">
+      <img src={props.img} />
+      <h2>{props.title}</h2>
+      <h4>{props.authur}</h4>
+      {props.children}
+    </article>
+  );
+};
+
+export default Booklist;
