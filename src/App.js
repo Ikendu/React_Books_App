@@ -41,12 +41,16 @@ const books = [
 ];
 
 const allBooks = books.map((book) => {
+  const displayTitle = () => {
+    alert(book.title);
+  };
   return (
     <div>
       <article className="book" key={book.id}>
         <img src={book.img} />
         <h2>{book.title}</h2>
         <h4>{book.authur}</h4>
+        <button onClick={displayTitle}>Display title</button>
         {book.children}
       </article>
     </div>
@@ -62,7 +66,11 @@ function Booklist() {
     <section className="booklist">
       {/*display Books using Array of Objects*/}
       <BookItems />
-      {/* {testingBook} */}
+
+      {/*
+       using the constructor
+      {testingBook} 
+      */}
 
       {/*display Books using props*/}
       <Book
@@ -82,10 +90,10 @@ function Booklist() {
 }
 
 const Book = (props) => {
-  const { img, title, authur, children } = props;
+  //const { img, title, authur, children } = props;
   return (
     <article className="book">
-      <img src={props.img} />
+      <img src={props.img} alt={props.title} />
       <h2>{props.title}</h2>
       <h4>{props.authur}</h4>
       {props.children}
@@ -95,7 +103,14 @@ const Book = (props) => {
 {
   /*
 const testingBook = books.map((book) => {
-  return <Book img={book.img} title={book.title} authur={book.authur} />;
+  return <Book img={book.img} title={book.title} authur={book.authur} key={book.id }/>;
+});
+
+OR
+//using spread operator for getting properties
+
+const testingBook = books.map((book) => {
+  return <Book {...book} key={book.id} />;
 });
 */
 }
