@@ -37,9 +37,9 @@ const books = [
 const allBooks = books.map((book) => {
   return (
     <article className="book">
+      <h4>{book.authur}</h4>
       <img src={book.img} />
       <h2>{book.title}</h2>
-      <h4>{book.authur}</h4>
       {book.children}
     </article>
   );
@@ -75,8 +75,8 @@ function Booklist() {
 const Book = (props) => {
   return (
     <article className="book">
-      <img src={props.img} />
       <h2>{props.title}</h2>
+      <img src={props.img} />
       <h4>{props.authur}</h4>
       {props.children}
     </article>
