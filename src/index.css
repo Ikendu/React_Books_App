@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f1f5f8;
+  background: #e8e0ec;
   color: #222;
 }
 
@@ -70,4 +70,10 @@ h1 {
 }
 button {
   padding: 5px;
+  font-size: 14px;
+  color: #e8e0ec;
+  background-color: #3e2b48;
+  border-radius: 5px;
+  margin: 10px;
+  letter-spacing: 2px;
 }
