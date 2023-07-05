@@ -64,15 +64,18 @@ const BookItems = () => {
 const displayValue = () => {
   alert("gibberlishes");
 };
+const getBook = (id) => {
+  const theBook = books.find((book) => book.id === id);
+  console.log(theBook);
+};
 
 function Booklist() {
   return (
     <section className="booklist">
       {/*direct annoymous function to get books using Book component*/}
-      {books.map((book) => {
-        return <Book {...book} />;
-      })}
-
+      {books.map((book) => (
+        <Book {...book} key={book.id} getBook={getBook} />
+      ))}
       {/*display Books using Array of Objects*/}
       <BookItems />
       {/*
@@ -98,13 +101,16 @@ function Booklist() {
 }
 
 const Book = (props) => {
-  const { img, title, authur, children } = props;
+  const { img, title, authur, children, getBook, id } = props;
+  const getSingleBook = () => {
+    getBook(id);
+  };
   return (
     <article className="book">
       <img src={props.img} alt={props.title} />
       <h2>{props.title}</h2>
       <h4>{props.authur}</h4>
-      <button>Nothing</button>
+      <button onClick={getSingleBook}>Get Book</button>
       {props.children}
     </article>
   );
