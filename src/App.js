@@ -1,48 +1,14 @@
-import { Children } from "react";
 import "./index.css";
+import { books } from "./books";
+//import Book from "./Book";
 
-const books = [
-  {
-    id: 1,
-    img: "./images/book-1.jpg",
-    title: "Iron Flame",
-    authur: "Rebecca Yarros",
-  },
-  {
-    id: 2,
-    img: "./images/book-2.jpg",
-    title: "The Housemaid",
-    authur: "Freida McFadden",
-  },
-  {
-    id: 3,
-    img: "./images/book-3.jpg",
-    title: "Unbroken Bonds of Battle: A Modern Warriors Book of Heroism",
-    authur: "Johnny Joey Jones",
-  },
-  // {
-  //   id: 4,
-  //   img: "./images/book-4.jpg",
-  //   title: "Atomic Habit",
-  //   authur: "James Clear",
-  // },
-  // {
-  //   id: 5,
-  //   img: "./images/book-5.jpg",
-  //   title: "Outlive: The Science and Art of Longevity",
-  //   authur: "Peter Attia MD",
-  // },
-  // {
-  //   id: 6,
-  //   img: "./images/book-6.jpg",
-  //   title: "Verity",
-  //   authur: "Colleen Hoover",
-  // },
-];
-
-const allBooks = books.map((book) => {
+const allBooks = books.map((book, index) => {
   const displayTitle = () => {
     alert(book.title);
+  };
+  //added getBook function
+  const getSingleBook = (id) => {
+    getBook(book.id);
   };
   return (
     <div>
@@ -51,85 +17,69 @@ const allBooks = books.map((book) => {
         <h2>{book.title}</h2>
         <h4>{book.authur}</h4>
         <button onClick={displayTitle}>Display title</button>
+        <button onClick={getSingleBook}>Get Book</button>
+        <span className="number">{index + 1}</span>
         {book.children}
       </article>
     </div>
   );
 });
 
-const BookItems = () => {
-  return <>{allBooks}</>;
-};
-
 const displayValue = () => {
   alert("gibberlishes");
 };
+
 const getBook = (id) => {
   const theBook = books.find((book) => book.id === id);
   console.log(theBook);
+  alert(theBook.title);
 };
 
+const BookItems = () => {
+  return (
+    <>
+      {allBooks} {getBook}
+    </>
+  );
+};
 function Booklist() {
   return (
-    <section className="booklist">
-      {/*direct annoymous function to get books using Book component*/}
-      {books.map((book) => (
-        <Book {...book} key={book.id} getBook={getBook} />
-      ))}
-      {/*display Books using Array of Objects*/}
-      <BookItems />
-      {/*
+    <>
+      <h1>Amazon Best Selling Books</h1>
+      <section className="booklist">
+        {/*direct annoymous function to get books using Book component
+        {books.map((book, index) => (
+          <Book {...book} key={book.id} getBook={getBook} number={index} />
+        ))}*/}
+        {/*display Books using Array of Objects*/}
+        <BookItems />
+        {/*
        using the constructor
       {testingBook} 
       */}
-      {/*display Books using props*/}
-      <Book
-        img="./images/book-1.jpg"
-        title="Iron Flame"
-        authur="Rebecca Yarros"
-        disPlayit={displayValue}
-      >
-        <p>I am a child prop</p>
-      </Book>
-      <Book
-        img="./images/book-2.jpg"
-        title="The Housemaid"
-        authur="Freida McFadden"
-      />
-    </section>
+
+        {/*
+        display Books using props*
+        <Book
+          id={1}
+          img="./images/book-1.jpg"
+          title="Iron Flame"
+          authur="Rebecca Yarros"
+          disPlayit={displayValue}
+        >
+          <p>I am a child prop</p>
+        </Book>
+        <Book
+          id={2}
+          img="./images/book-2.jpg"
+          title="The Housemaid"
+          authur="Freida McFadden"
+          getBook={getBook}
+        />
+        */}
+      </section>
+    </>
   );
-}
-
-const Book = (props) => {
-  const { img, title, authur, children, getBook, id } = props;
-  const getSingleBook = () => {
-    getBook(id);
-  };
-  return (
-    <article className="book">
-      <img src={props.img} alt={props.title} />
-      <h2>{props.title}</h2>
-      <h4>{props.authur}</h4>
-      <button onClick={getSingleBook}>Get Book</button>
-      {props.children}
-    </article>
-  );
-};
-
-{
-  /*
-const testingBook = books.map((book) => {
-  return <Book img={book.img} title={book.title} authur={book.authur} key={book.id }/>;
-});
-
-OR
-//using spread operator for getting properties
-
-const testingBook = books.map((book) => {
-  return <Book {...book} key={book.id} disPlayit={displayValue} />;
-});
-
-*/
 }
 
 export default Booklist;

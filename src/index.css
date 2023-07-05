@@ -18,6 +18,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+h1 {
+  text-align: center;
+  padding-top: 20px;
+}
 .booklist {
   width: 90vw;
   max-width: 1170px;
@@ -35,6 +39,7 @@ code {
   border-radius: 1rem;
   padding: 2rem;
   text-align: center;
+  position: relative;
 }
 .book img {
   width: 100%;
@@ -49,4 +54,16 @@ code {
   font-size: 0.75rem;
   margin-top: 0.5rem;
   letter-spacing: 2px;
+}
+
+.number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #631021;
+  padding: 9px;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 1rem;
+  color: #c2bebf;
 }

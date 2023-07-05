@@ -1,4 +1,4 @@
-const books = [
+export const books = [
   {
     id: 1,
     img: "./images/book-1.jpg",
@@ -36,20 +36,3 @@ const books = [
     authur: "Colleen Hoover",
   },
 ];
-
-export const allBooks = books.map((book) => {
-  const displayTitle = () => {
-    alert(book.title);
-  };
-  return (
-    <div>
-      <article className="book" key={book.id}>
-        <img src={book.img} />
-        <h2>{book.title}</h2>
-        <h4>{book.authur}</h4>
-        <button onClick={displayTitle}>Display title</button>
-        {book.children}
-      </article>
-    </div>
-  );
-});
