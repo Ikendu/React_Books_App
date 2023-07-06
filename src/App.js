@@ -17,7 +17,7 @@ const allBooks = books.map((book, index) => {
         <h2>{book.title}</h2>
         <h4>{book.authur}</h4>
         <button onClick={displayTitle}>Display title</button>
-        <button onClick={getSingleBook}>Get Book</button>
+        <button onClick={getSingleBook}>Get Authur</button>
         <span className="number">{index + 1}</span>
         {book.children}
       </article>
@@ -32,7 +32,7 @@ const displayValue = () => {
 const getBook = (id) => {
   const theBook = books.find((book) => book.id === id);
   console.log(theBook);
-  alert(theBook.title);
+  alert(theBook.authur);
 };
 
 const BookItems = () => {
@@ -45,7 +45,13 @@ const BookItems = () => {
 function Booklist() {
   return (
     <>
-      <h1>Amazon Best Selling Books</h1>
+      <div className="header">
+        <h1>Amazon Best Selling Books</h1>
+        <p>
+          A practice website done with Reactjs and CSS by Chibundu David Aniede
+        </p>
+      </div>
+
       <section className="booklist">
         {/*direct annoymous function to get books using Book component
         {books.map((book, index) => (
