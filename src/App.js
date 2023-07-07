@@ -1,4 +1,4 @@
-import "./index.css";
+import { useState } from "react";
 import { books } from "./books";
 //import Book from "./Book";
 
@@ -25,10 +25,6 @@ const allBooks = books.map((book, index) => {
   );
 });
 
-const displayValue = () => {
-  alert("gibberlishes");
-};
-
 const getBook = (id) => {
   const theBook = books.find((book) => book.id === id);
   console.log(theBook);
@@ -36,6 +32,7 @@ const getBook = (id) => {
 };
 
 const BookItems = () => {
+  const { book, setBook } = useState(books);
   return (
     <>
       {allBooks} {getBook}
